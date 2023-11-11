@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/homePage"
+        android:title="@string/home"
+        android:icon="@drawable/icon_home" />
+    <item android:id="@+id/privacyPage"
+        android:title="@string/privacy"
+        android:icon="@drawable/icon_privacy" />
+</menu>

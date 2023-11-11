@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_marginVertical="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+    <LinearLayout
+        android:id="@+id/articleComponents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:foreground="@drawable/clickable_article"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/articleImage"
+            android:layout_width="320dp"
+            android:layout_height="160dp"
+            tools:srcCompat="@drawable/img01"
+            android:contentDescription="@string/article_image"/>
+        <TextView
+            android:id="@+id/articleTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            tools:text="Wild Stack Frenzy"/>
+    </LinearLayout>
+</LinearLayout>

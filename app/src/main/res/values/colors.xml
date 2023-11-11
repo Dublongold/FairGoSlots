@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primary_color">#FFFACE14</color>
+    <color name="primary_disable_color">#FFBDBBB1</color>
+    <color name="secondary_color">#FF0F442E</color>
+
+    <color name="privacy_policy_text_bg">#4D000000</color>
+</resources>
