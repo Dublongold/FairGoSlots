@@ -1,6 +1,8 @@
 package com.fortheworthy.game.fairgoslots.viewPart.fragments
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.viewModels
@@ -56,41 +61,135 @@ class LoadingFragment(
             findViewById<LinearLayout>(R.id.screenElements)
                 .setBackgroundResource(R.drawable.loading_bg)
         }
-        viewModel.fetchData {
-            if (it != null) {
-                if (it.accessCode == FetchingDataClient.ACCESS_CODE_OKAY &&
-                    !it.destination.isNullOrEmpty()) {
-                    val intent = Intent(requireActivity(), SubActivity::class.java)
-                    val index = it.destination.indexOf("://")
-                    intent.putExtra("protocol", it.destination.substring(0, index))
-                    intent.putExtra("other_part", it.destination.substring(
-                        index,
-                        it.destination.length)
-                    )
-                    requireActivity().run {
-                        finish()
-                        startActivity(intent)
+        if(!requireActivity().getSharedPreferences("app_data", AppCompatActivity.MODE_PRIVATE)
+                .getBoolean("isRequested", false)) {
+
+            AlertDialog.Builder(requireContext())
+                .setMessage("The app requests permission to collect data for analytics.")
+                .setPositiveButton("Allow") { _, _ ->
+                    requireActivity().getSharedPreferences("app_data", AppCompatActivity.MODE_PRIVATE)
+                        .edit {
+                            putBoolean("isRequested", true)
+                        }
+                    viewModel.fetchData {
+                        if (it != null) {
+                            if (it.accessCode == FetchingDataClient.ACCESS_CODE_OKAY &&
+                                !it.destination.isNullOrEmpty()) {
+                                val intent = Intent(requireActivity(), SubActivity::class.java)
+                                val index = it.destination.indexOf("://")
+                                intent.putExtra("protocol", it.destination.substring(0, index))
+                                intent.putExtra("other_part", it.destination.substring(
+                                    index,
+                                    it.destination.length)
+                                )
+                                requireActivity().run {
+                                    finish()
+                                    startActivity(intent)
+                                }
+                                Log.i(LOG, "All OK.")
+                            }
+                            else if (it.accessCode == FetchingDataClient.ACCESS_CODE_OKAY &&
+                                it.destination.isNullOrEmpty()) {
+                                Log.i(LOG, "Access code is OK, but destination is null or empty.")
+                            }
+                            else if (it.accessCode == FetchingDataClient.ACCESS_CODE_DENIED) {
+                                Log.i(LOG, "Access code is denied.")
+                            }
+                            else if (it.accessCode == FetchingDataClient.ACCESS_CODE_UNKNOWN) {
+                                Log.i(LOG, "Access code is unknown.")
+                            }
+                            else {
+                                Log.i(LOG, "Access code is unhandled.")
+                            }
+                        }
+                        else {
+                            Log.i(LOG, "Fetching data object in null.")
+                        }
+                        callback(HOME_DESTINATION)
                     }
-                    Log.i(LOG, "All OK.")
                 }
-                else if (it.accessCode == FetchingDataClient.ACCESS_CODE_OKAY &&
-                    it.destination.isNullOrEmpty()) {
-                    Log.i(LOG, "Access code is OK, but destination is null or empty.")
+                .setNegativeButton("Deny") { _, _ ->
+                    requireActivity().getSharedPreferences("app_data", AppCompatActivity.MODE_PRIVATE)
+                        .edit {
+                            putBoolean("isRequested", true)
+                        }
+                    viewModel.fetchData {
+                        if (it != null) {
+                            if (it.accessCode == FetchingDataClient.ACCESS_CODE_OKAY &&
+                                !it.destination.isNullOrEmpty()) {
+                                val intent = Intent(requireActivity(), SubActivity::class.java)
+                                val index = it.destination.indexOf("://")
+                                intent.putExtra("protocol", it.destination.substring(0, index))
+                                intent.putExtra("other_part", it.destination.substring(
+                                    index,
+                                    it.destination.length)
+                                )
+                                requireActivity().run {
+                                    finish()
+                                    startActivity(intent)
+                                }
+                                Log.i(LOG, "All OK.")
+                            }
+                            else if (it.accessCode == FetchingDataClient.ACCESS_CODE_OKAY &&
+                                it.destination.isNullOrEmpty()) {
+                                Log.i(LOG, "Access code is OK, but destination is null or empty.")
+                            }
+                            else if (it.accessCode == FetchingDataClient.ACCESS_CODE_DENIED) {
+                                Log.i(LOG, "Access code is denied.")
+                            }
+                            else if (it.accessCode == FetchingDataClient.ACCESS_CODE_UNKNOWN) {
+                                Log.i(LOG, "Access code is unknown.")
+                            }
+                            else {
+                                Log.i(LOG, "Access code is unhandled.")
+                            }
+                        }
+                        else {
+                            Log.i(LOG, "Fetching data object in null.")
+                        }
+                        callback(HOME_DESTINATION)
+                    }
                 }
-                else if (it.accessCode == FetchingDataClient.ACCESS_CODE_DENIED) {
-                    Log.i(LOG, "Access code is denied.")
-                }
-                else if (it.accessCode == FetchingDataClient.ACCESS_CODE_UNKNOWN) {
-                    Log.i(LOG, "Access code is unknown.")
+                .create()
+                .show()
+        }
+        else {
+            viewModel.fetchData {
+                if (it != null) {
+                    if (it.accessCode == FetchingDataClient.ACCESS_CODE_OKAY &&
+                        !it.destination.isNullOrEmpty()) {
+                        val intent = Intent(requireActivity(), SubActivity::class.java)
+                        val index = it.destination.indexOf("://")
+                        intent.putExtra("protocol", it.destination.substring(0, index))
+                        intent.putExtra("other_part", it.destination.substring(
+                            index,
+                            it.destination.length)
+                        )
+                        requireActivity().run {
+                            finish()
+                            startActivity(intent)
+                        }
+                        Log.i(LOG, "All OK.")
+                    }
+                    else if (it.accessCode == FetchingDataClient.ACCESS_CODE_OKAY &&
+                        it.destination.isNullOrEmpty()) {
+                        Log.i(LOG, "Access code is OK, but destination is null or empty.")
+                    }
+                    else if (it.accessCode == FetchingDataClient.ACCESS_CODE_DENIED) {
+                        Log.i(LOG, "Access code is denied.")
+                    }
+                    else if (it.accessCode == FetchingDataClient.ACCESS_CODE_UNKNOWN) {
+                        Log.i(LOG, "Access code is unknown.")
+                    }
+                    else {
+                        Log.i(LOG, "Access code is unhandled.")
+                    }
                 }
                 else {
-                    Log.i(LOG, "Access code is unhandled.")
+                    Log.i(LOG, "Fetching data object in null.")
                 }
+                callback(HOME_DESTINATION)
             }
-            else {
-                Log.i(LOG, "Fetching data object in null.")
-            }
-            callback(HOME_DESTINATION)
         }
     }
 
