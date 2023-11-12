@@ -1,8 +1,6 @@
 package com.fortheworthy.game.fairgoslots.viewPart.fragments
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -22,7 +20,6 @@ import com.fortheworthy.game.fairgoslots.viewModelPart.fragments.loading.Loading
 import com.fortheworthy.game.fairgoslots.viewPart.activities.MainActivity.Companion.HOME_DESTINATION
 import com.fortheworthy.game.fairgoslots.viewPart.activities.SubActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.coroutines.delay
 
 class LoadingFragment(
     private val callback: (String) -> Unit
