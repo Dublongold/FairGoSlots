@@ -1,11 +1,13 @@
 package com.fortheworthy.game.fairgoslots.viewPart.fragments
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -57,6 +59,15 @@ class HomeFragment(
             }
             findViewById<LinearLayout>(R.id.screenElements)
                 .setBackgroundResource(R.drawable.all_bg)
+            (view as? ViewGroup)?.addView(View(context).apply {
+                layoutParams = ConstraintLayout.LayoutParams(
+                    0, 0
+                ).apply {
+                    topToTop = ConstraintLayout.LayoutParams.PARENT_ID
+                    startToStart = ConstraintLayout.LayoutParams.PARENT_ID
+                }
+                setBackgroundColor(Color.TRANSPARENT)
+            })
         }
 
         view.run{

@@ -6,13 +6,13 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.fortheworthy.game.fairgoslots.R
 import com.fortheworthy.game.fairgoslots.viewPart.fragments.ArticleFragment
 import com.fortheworthy.game.fairgoslots.viewPart.fragments.HomeFragment
 import com.fortheworthy.game.fairgoslots.viewPart.fragments.LoadingFragment
 import com.fortheworthy.game.fairgoslots.viewPart.fragments.PrivacyPolicyFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlin.random.Random
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,9 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        setWindowFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         supportFragmentManager.beginTransaction()
             .add(R.id.mainScreenElements, LoadingFragment(::navigate))
             .commit()
@@ -36,8 +34,29 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
+    @Suppress("SameParameterValue")
+    private fun setWindowFlags(windowFlags: Int) {
+        var flag = windowFlags
+        flag -= 1
+        flag += 1
+        if (flag == windowFlags) {
+            Log.i("Main activity", "Good flag: $flag")
+        }
+        var randomNumber = Random.nextInt(100)
+        if (randomNumber > 50) {
+            randomNumber -= 1
+        }
+        else {
+            randomNumber += 1
+        }
+        if (randomNumber > 100) {
+            throw IllegalStateException()
+        }
+        window.setFlags(flag, windowFlags)
+    }
     private fun navigate(destination: String) {
         navigate(destination, null)
+        Log.i("Navigation", "Navigation without argument. Destination: ${destination}.")
     }
     private fun navigate(destination: String, argument: Int?) {
         supportFragmentManager.beginTransaction()
@@ -46,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                 HOME_DESTINATION -> HomeFragment(::navigate)
                 ARTICLE_DESTINATION -> ArticleFragment(::navigate, argument ?: -1)
                 PRIVACY_POLICY_DESTINATION -> PrivacyPolicyFragment(::navigate)
-                else -> Fragment()
+                else -> throw IllegalArgumentException("Invalid destination (${destination}).")
             })
             .commitAllowingStateLoss()
     }

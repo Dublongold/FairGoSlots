@@ -14,12 +14,14 @@ import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.fortheworthy.game.fairgoslots.R
 import com.fortheworthy.game.fairgoslots.networkPart.FetchingDataClient
 import com.fortheworthy.game.fairgoslots.viewModelPart.fragments.loading.LoadingViewModel
 import com.fortheworthy.game.fairgoslots.viewPart.activities.MainActivity.Companion.HOME_DESTINATION
 import com.fortheworthy.game.fairgoslots.viewPart.activities.SubActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.launch
 
 class LoadingFragment(
     private val callback: (String) -> Unit
@@ -31,6 +33,12 @@ class LoadingFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                callback("Something...")
+            }
+            catch (_: Exception) { }
+        }
         return inflater.inflate(R.layout.fragment_loading, container, false)
     }
 

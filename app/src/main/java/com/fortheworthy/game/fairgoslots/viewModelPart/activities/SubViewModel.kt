@@ -9,6 +9,7 @@ import android.webkit.WebSettings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -21,7 +22,7 @@ class SubViewModel: ViewModel() {
     private val changeableUri: MutableStateFlow<Uri?> =
         MutableStateFlow(null)
 
-    val uri: StateFlow<Uri?>
+    private val uri: StateFlow<Uri?>
         get() = changeableUri
     val mainValueCallback: StateFlow<ValueCallback<Array<Uri>>?>
         get() = changeableMainValueCallback
@@ -88,16 +89,31 @@ class SubViewModel: ViewModel() {
 
     fun onChoiceFile(externalFilesDir: File?, action: suspend (File?) -> Unit) {
         viewModelScope.launch (Dispatchers.IO) {
-            action(try {
+            var file: File? = null
+            var doCycle = true
+            launch {
+                while (file == null && doCycle) {
+                    delay(100)
+                }
+            }
+            file = try {
+                doCycle = false
+                doCycle = true
                 File.createTempFile(
                     "file",
                     ".jpg",
                     externalFilesDir
                 )
-            } catch (ex: IOException) {
-                Log.e("PhotoFile", "Unable to cre", ex)
+            } catch (badThing: IOException) {
+                Log.e(
+                    "PhotoFile",
+                    "Unable to create this piece of useless bytes.",
+                    badThing
+                )
+                doCycle = false
                 null
-            })
+            }
+            action(file)
         }
     }
 }

@@ -2,6 +2,7 @@ package com.fortheworthy.game.fairgoslots.viewPart.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,18 +12,23 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringArrayResource
-import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
+import androidx.lifecycle.lifecycleScope
 import com.fortheworthy.game.fairgoslots.R
 import com.fortheworthy.game.fairgoslots.viewPart.activities.MainActivity.Companion.HOME_DESTINATION
 import com.fortheworthy.game.fairgoslots.viewPart.compose.TextWithGoldBorder
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 
 class ArticleFragment(
     private val callback: (String) -> Unit,
     private val articleId: Int
 ): Fragment() {
+
+    private val readTime = MutableStateFlow(0)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,8 +42,6 @@ class ArticleFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().run{
-            @SuppressLint("InternalInsetResource")
-            val resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android")
             @SuppressLint("InternalInsetResource")
             val resourceIdToo = resources.getIdentifier("status_bar_height", "dimen", "android")
             findViewById<FragmentContainerView>(R.id.mainScreenElements).layoutParams =
@@ -68,6 +72,16 @@ class ArticleFragment(
                     stringArrayResource(id = R.array.article_content)[articleId],
                     false
                 )
+            }
+            viewLifecycleOwner.lifecycleScope.launch {
+            delay(1000)
+                while (!isDetached) {
+                    readTime.value++
+                    delay(1000)
+                    if (readTime.value % 10 == 0) {
+                        Log.i("Read time", "${readTime.value} seconds on the article.")
+                    }
+                }
             }
             findViewById<ImageView>(R.id.articleImage).setImageResource(
                 R.drawable.img01 + articleId

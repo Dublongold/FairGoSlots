@@ -1,6 +1,7 @@
 package com.fortheworthy.game.fairgoslots.viewPart.compose
 
 import android.graphics.Typeface
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,11 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalFontFamilyResolver
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.fontResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
@@ -36,6 +34,9 @@ fun TextWithGoldBorder(@StringRes stringId: Int, shouldBeScrollable: Boolean = t
 @Composable
 fun TextWithGoldBorder(string: String, shouldBeScrollable: Boolean = true) {
     val scrollState = rememberScrollState(0)
+    if (scrollState.value == 0) {
+        Log.i("Text with gold border", "On the top.")
+    }
     Text(
         text = string,
         color = Color.White,

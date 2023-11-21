@@ -6,7 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.compose.material3.Text
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import com.fortheworthy.game.fairgoslots.R
@@ -56,8 +60,12 @@ class PrivacyPolicyFragment(
             findViewById<LinearLayout>(R.id.screenElements)
                 .setBackgroundResource(R.drawable.all_bg)
         }
+        if (isDetached) {
+            callback("")
+        }
 
         view.findViewById<ComposeView>(R.id.privacyPolicyText).setContent {
+            Text(text = "", style = TextStyle(color = Color.Transparent, fontSize = 0.sp))
             TextWithGoldBorder(R.string.privacy_policy_text)
         }
     }

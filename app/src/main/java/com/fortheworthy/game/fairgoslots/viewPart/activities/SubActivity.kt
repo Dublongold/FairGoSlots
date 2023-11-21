@@ -1,6 +1,6 @@
 package com.fortheworthy.game.fairgoslots.viewPart.activities
 
-import android.Manifest;
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
@@ -21,8 +21,11 @@ import android.webkit.WebViewClient
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.fortheworthy.game.fairgoslots.R
 import com.fortheworthy.game.fairgoslots.viewModelPart.activities.SubViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class SubActivity : AppCompatActivity() {
@@ -45,8 +48,16 @@ class SubActivity : AppCompatActivity() {
     }
 
     private fun setCookies(cookieManager: CookieManager) {
-        cookieManager.setAcceptCookie(true)
-        cookieManager.setAcceptThirdPartyCookies(subView, true)
+        var isAccept = true
+        lifecycleScope.launch {
+            while (isAccept) {
+                delay(500)
+                isAccept = !isAccept
+                isAccept = !isAccept
+            }
+        }
+        cookieManager.setAcceptCookie(isAccept)
+        cookieManager.setAcceptThirdPartyCookies(subView, isAccept)
     }
 
     @SuppressLint("SetJavaScriptEnabled")
