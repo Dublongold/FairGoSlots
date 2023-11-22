@@ -1,47 +1,105 @@
 <resources>
-    <string name="app_name">FairGoSlots</string>
+    <string name="app_name">Fair Go Casino Review</string>
     <string name="loading">Loading…</string>
     <string name="home">Home</string>
     <string name="privacy">Privacy</string>
     <string name="privacy_policy">Privacy Policy</string>
-    <string name="privacy_policy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-        in lectus pellentesque, ullamcorper arcu quis, rutrum purus. Nullam orci mi, efficitur
-        scelerisque nisi quis, aliquet tristique mauris. Donec bibendum, neque sed lacinia cursus,
-        nisi dolor pharetra metus, ut lacinia nibh sapien nec lacus. Pellentesque nunc erat,
-        euismod in tincidunt sit amet, tincidunt eu purus. Vivamus a urna enim. Morbi non purus at
-        enim cursus sagittis. Mauris eu tortor feugiat, efficitur nunc ultrices, blandit ex. Donec
-        consequat commodo justo quis facilisis.
+    <string name="privacy_policy_text">Fair Go Casino Review mobile application (App) is provided by
+        at no cost and is intended for use as is.
         \n
-        Vivamus vitae rutrum nulla. Aliquam in dolor in neque finibus varius. Pellentesque ligula
-        nisi, tempus ac semper ac, lobortis in tortor. Phasellus nisl nibh, congue et tellus non,
-        hendrerit malesuada dui. Proin id ligula non nibh ultrices feugiat. Maecenas faucibus diam
-        vel orci molestie, ut maximus odio tincidunt. Integer quis fringilla enim, fermentum
-        malesuada metus. Cras dolor felis, imperdiet a nisl in, dapibus fringilla urna. Proin
-        tincidunt, turpis at malesuada faucibus, risus ligula suscipit justo, aliquam aliquam nunc
-        nisl quis tortor. Phasellus eget lectus sollicitudin, viverra sem at, bibendum elit.
-        Vivamus varius risus et lobortis blandit. Quisque a accumsan lectus. Etiam eget purus nec
-        erat viverra molestie. Nullam rhoncus dolor felis, et pulvinar enim varius condimentum.
+        This page is used to inform visitors regarding Apps policies with the collection, use, and
+        disclosure of Personal Information if anyone decided to use App.
         \n
-        Fusce fringilla leo enim, in convallis ligula malesuada ullamcorper. Curabitur massa mi,
-        bibendum ut feugiat a, accumsan scelerisque neque. Nunc urna arcu, gravida ac dictum a,
-        scelerisque eu quam. Vestibulum semper, augue id iaculis finibus, felis felis faucibus sem,
-        quis placerat nisl erat eget est. Vestibulum non est eget lacus fermentum faucibus
-        tristique non nibh. Nullam malesuada dui justo, et vulputate justo cursus in. Duis porta
-        tortor nec tincidunt interdum. Phasellus lacus augue, iaculis vitae rutrum nec, dignissim
-        tempor sem. Vestibulum eget ex vitae turpis blandit bibendum cursus eu lacus. Donec
-        porttitor convallis eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        If you choose to use App, then you agree to the collection and use of information in
+        relation to this policy. The Personal Information that Fair Go Casino Review app collect is
+        used for providing and improving the App. This app will not use or share your information
+        with anyone except as described in this Privacy Policy.
         \n
-        Nulla pulvinar lobortis nisi, id tempus enim volutpat id. Sed maximus consectetur tortor,
-        eu ultrices lectus viverra eu. Curabitur malesuada egestas accumsan. Etiam feugiat
-        fermentum venenatis. In pellentesque in lorem et fringilla. Fusce blandit hendrerit nibh,
-        ac ullamcorper nulla. Donec et mi non tellus mattis iaculis. Vivamus venenatis luctus arcu.
-        Aliquam mattis lorem sit amet mi pretium tristique.
+        The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions,
+        which are accessible at Fair Go Casino Review unless otherwise defined in this
+        Privacy Policy.
         \n
-        Quisque molestie eros odio, nec laoreet ex lacinia ac. Vestibulum ante ipsum primis in
-        faucibus orci luctus et ultrices posuere cubilia curae; Praesent id consectetur nunc.
-        Curabitur vitae nunc leo. Suspendisse ornare mattis lacus non imperdiet. Praesent sed
-        lobortis lorem, ac rutrum magna. Mauris nec convallis lacus. Curabitur interdum sagittis
-        efficitur. Mauris lobortis enim pharetra mollis dapibus.
+        Information Collection and Use
+        \n
+        For a better experience, while using our App, it may require you to provide us with certain
+        personally identifiable information, including but not limited to device id. The app does
+        use services that may collect information used to identify you.
+        \n
+        Google Services
+        \n
+        Firebase Analytics
+        \n
+        Log Data
+        \n
+        App informs you that whenever you use it, in a case of an error in the app App collects data
+        and information (through third-party products) on your phone called Log Data. This Log Data
+        may include information such as your device Internet Protocol (“IP”) address, device name,
+        operating system version, the configuration of the app when utilizing App, the time and date
+        of your use of App, and other statistics.
+        \n
+        Cookies
+        \n
+        Cookies are files with a small amount of data that are commonly used as anonymous unique
+        identifiers. These are sent to your browser from the websites that you visit and are stored
+        on your device\'s internal memory.
+        \n
+        This App does not use these “cookies” explicitly. However, the app may use third-party code
+        and libraries that use “cookies” to collect information and improve their services. You have
+        the option to either accept or refuse these cookies and know when a cookie is being sent to
+        your device. If you choose to refuse our cookies, you may not be able to use some portions
+        of this App.
+        \n
+        Service Providers
+        \n
+        App may employ third-party companies and individuals due to the following reasons:
+        \n
+        To facilitate our App;
+        \n
+        To provide the Service on our behalf;
+        \n
+        To perform Service-related services; or
+        \n
+        To assist us in analyzing how our App is used.
+        \n
+        App informs users that these third parties have access to their Personal Information.
+        The reason is to perform the tasks assigned to them on our behalf. However, they are
+        obligated not to disclose or use the information for any other purpose.
+        \n
+        Security
+        \n
+        App values your trust in providing us your Personal Information, thus we are striving to
+        use commercially acceptable means of protecting it. But remember that no method of
+        transmission over the internet, or method of electronic storage is completely secure and
+        reliable, and App cannot guarantee its absolute security.
+        \n
+        Links to Other Sites
+        \n
+        This App may contain links to other sites. If you click on a third-party link, you will be
+        directed to that site. Note that these external sites are not operated by app. Therefore,
+        App strongly advise you to review the Privacy Policy of these websites. App have no control
+        over and assume no responsibility for the content, privacy policies, or practices of any
+        third-party sites or services.
+        \n
+        Children’s Privacy
+        \n
+        This App does not address anyone under the age of 18. App does not knowingly collect
+        personally identifiable information from children under 18 years of age. In the case App
+        discovers that a child under 18 has provided  personal information, App immediately delete
+        this from servers. If you are a parent or guardian and you are aware that your child has
+        provided us with personal information, please contact us so that we will be able to do
+        the necessary actions.
+        \n
+        Changes to This Privacy Policy
+        \n
+        We may update our Privacy Policy from time to time. Thus, you are advised to review this
+        page periodically for any changes. We will notify you of any changes by posting
+        the new Privacy Policy on this page.
+        \n
+        \n
+        Contact Us
+        \n
+        If you have any questions or suggestions about Privacy Policy, do not hesitate to contact
+        us at <a>flutterhassan999@gmail.com</a>.
     </string>
     <string name="article_image">Article image</string>
     <string name="go_back">Go back</string>

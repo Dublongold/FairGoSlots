@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.fortheworthy.game.fairgoslots"
+    namespace = "com.revappcasi.nofair.goplay"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.fortheworthy.game.fairgoslots"
+        applicationId = "com.revappcasi.nofair.goplay"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
